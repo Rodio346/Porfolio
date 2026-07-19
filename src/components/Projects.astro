@@ -4,6 +4,12 @@
     Practical builds spanning evaluation tooling, multimodal AI, and production-oriented research systems.
   </p>
   <div class="featured-grid">
+    <a class="card" href="https://github.com/Rodio346/Bias-Drift-Detection" target="_blank" rel="noreferrer">
+      <p class="top"><span>Featured</span><span class="status">Independent Research</span></p>
+      <h3>Bias Drift Detection in Clinical LLMs</h3>
+      <p class="desc">Version-tracking bias evaluation pipeline across 6 LLMs (Llama 2-3.2, Gemini 2.5-3.1) using 400 synthetic clinical vignettes derived from MIMIC-IV. Found a 4.4x reduction in demographic pain-score disparity from a prompt wording change alone.</p>
+      <p class="tags"><span>Bias Evaluation</span><span>LLM Auditing</span><span>MIMIC-IV</span><span>Clinical AI</span></p>
+    </a>
     <a class="card" href="https://github.com/Rodio346/deepgaurd" target="_blank" rel="noreferrer">
       <p class="top"><span>Featured</span><span class="status">In progress</span></p>
       <h3>DeepGuard</h3>
@@ -19,6 +25,7 @@
   </div>
   <div class="divider"></div>
   <div class="compact">
+    <article><div><p class="title"><a href="https://github.com/Rodio346/vedic_math_ML" target="_blank" rel="noreferrer">Vedic Mathematics for AI Acceleration</a></p><p class="desc">Four-phase empirical study (Python → C++ → CUDA on RTX 3050 Ti → transformer attention) testing whether the Urdhva-Tiryagbhyam Vedic multiplication sutra offers ML acceleration advantages. Found a Vedic-inspired attention tiling strategy with 16x more concurrent computation and 19% lower memory traffic than FlashAttention for edge inference.</p><p class="tags"><span>CUDA</span><span>C++</span><span>Attention Optimization</span></p></div><p class="date">2026</p></article>
     <article><div><p class="title">Multimodal Hate Speech Detection</p><p class="desc">Compared early, late, and cross-attention fusion across BERT, ViT, and VisualBERT for multimodal classification.</p><p class="tags"><span>NLP</span><span>Multimodal</span><span>Transformers</span></p></div><p class="date">May - Sep 2023</p></article>
     <article><div><p class="title"><a href="https://github.com/Rodio346/Article_person_verification" target="_blank" rel="noreferrer">Article Person Verification Agent</a></p><p class="desc">Autonomous adverse media screening using LangGraph and Gemini - with MLflow tracing and multilingual support across 6+ scripts.</p><p class="tags"><span>LangGraph</span><span>MLflow</span><span>Gemini</span></p></div><p class="date">2025</p></article>
     <article><div><p class="title">Brain Tumor Segmentation</p><p class="desc">3D FMRI segmentation using NVIDIA deep learning libraries and SAM.</p><p class="tags"><span>Medical AI</span><span>Computer Vision</span><span>PyTorch</span></p></div><p class="date">Sep - Dec 2023</p></article>
@@ -27,7 +34,7 @@
   </div>
 </section>
 <style>
-  .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
   .card { background: rgba(240, 237, 230, 0.04); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
   .card:hover { border-color: var(--border-hover); }
   .top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 10px; text-transform: uppercase; color: var(--muted); }
