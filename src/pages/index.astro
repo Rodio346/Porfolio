@@ -1,86 +1,21 @@
 ---
-import Base from '../layouts/Base.astro';
 import { withBase } from '../lib/withBase';
 
 const professionalUrl = withBase(import.meta.env.BASE_URL, 'professional/');
-const personalUrl = withBase(import.meta.env.BASE_URL, 'about-me/');
 ---
 
-<Base
-  title="Vishal Yadav"
-  description="Choose between professional profile and personal side."
->
-  <main class="landing">
-    <p class="eyebrow">Vishal Yadav</p>
-    <h1>Choose your path.</h1>
-    <p class="intro">Two versions of my work and thinking, depending on what you are looking for.</p>
-    <div class="choices">
-      <a class="choice" href={professionalUrl}>
-        <span class="title">Professional profile</span>
-        <span class="desc">Research, experience, projects, and skills.</span>
-      </a>
-      <a class="choice" href={personalUrl}>
-        <span class="title">Personal side</span>
-        <span class="desc">Story, books, and what I am thinking about.</span>
-      </a>
-    </div>
-  </main>
-</Base>
-
-<style>
-  .landing {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 16px;
-  }
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  h1 {
-    font-size: 52px;
-    line-height: 1.05;
-    color: var(--text);
-  }
-  .intro {
-    color: var(--muted);
-    max-width: 520px;
-    margin-bottom: 8px;
-  }
-  .choices {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    max-width: 760px;
-  }
-  .choice {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    color: var(--text);
-  }
-  .choice:hover {
-    border-color: var(--border-hover);
-    border-bottom-color: var(--border-hover);
-  }
-  .title {
-    font-family: var(--font-display);
-    font-size: 22px;
-  }
-  .desc {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.7;
-  }
-  @media (max-width: 767px) {
-    h1 { font-size: 40px; }
-    .choices { grid-template-columns: 1fr; }
-  }
-</style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${professionalUrl}`} />
+    <link rel="canonical" href={professionalUrl} />
+    <title>Vishal Yadav</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href={professionalUrl}>Vishal Yadav — Professional profile</a>&hellip;</p>
+    <script is:inline define:vars={{ professionalUrl }}>
+      window.location.replace(professionalUrl);
+    </script>
+  </body>
+</html>

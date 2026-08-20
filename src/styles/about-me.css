@@ -1,8 +1,8 @@
 :root {
   --about-bg: #faf7f2;
   --about-text: #1a1a18;
-  --about-muted: #7a7570;
-  --about-accent: #c1674a;
+  --about-muted: #6a655f;
+  --about-accent: #a4553c;
   --about-border: rgba(26, 26, 24, 0.1);
   --about-max-width: 660px;
   --about-font-display: 'Syne', sans-serif;

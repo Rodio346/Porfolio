@@ -8,6 +8,7 @@ const requiredFiles = [
   path.join(dist, 'index.html'),
   path.join(dist, 'professional', 'index.html'),
   path.join(dist, 'about-me', 'index.html'),
+  path.join(dist, 'choose', 'index.html'),
 ];
 
 const missing = requiredFiles.filter((file) => !existsSync(file));
@@ -18,7 +19,7 @@ if (missing.length > 0) {
 }
 
 const indexHtml = readFileSync(path.join(dist, 'index.html'), 'utf-8');
-const malformedPatterns = ['/Porfolioprofessional/', '/Porfolioabout-me/'];
+const malformedPatterns = ['/Portfolioprofessional/', '/Portfolioabout-me/'];
 const malformedFound = malformedPatterns.filter((pattern) => indexHtml.includes(pattern));
 if (malformedFound.length > 0) {
   console.error('Malformed route links detected in dist/index.html:');

@@ -1,11 +1,12 @@
 import { chromium } from 'playwright';
 
-const base = process.env.SMOKE_BASE_URL || 'http://127.0.0.1:4173/Porfolio/';
+const base = process.env.SMOKE_BASE_URL || 'http://127.0.0.1:4173/Portfolio/';
 
 const requiredChecks = [
-  { path: '', selector: 'h1', text: 'Choose your path.' },
+  { path: '', selector: 'h1', text: 'Vishal' },
   { path: 'professional/', selector: 'h1', text: 'Vishal' },
   { path: 'about-me/', selector: 'h1', text: 'Vishal Yadav.' },
+  { path: 'choose/', selector: 'h1', text: 'Choose your path.' },
 ];
 
 const browser = await chromium.launch();

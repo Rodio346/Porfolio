@@ -6,9 +6,9 @@ Live site: [https://rodio346.github.io/Portfolio/](https://rodio346.github.io/Po
 
 - `npm install`
 - `npm run dev`
-- open `http://localhost:4321/Porfolio/`
-- professional route: `http://localhost:4321/Porfolio/professional/`
-- personal route: `http://localhost:4321/Porfolio/about-me/`
+- open `http://localhost:4321/Portfolio/`
+- professional route: `http://localhost:4321/Portfolio/professional/`
+- personal route: `http://localhost:4321/Portfolio/about-me/`
 
 ## Build
 

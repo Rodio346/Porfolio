@@ -10,6 +10,17 @@
       <a class="nav-link" data-nav-link href="#contact"><span class="nav-dot"></span>Contact</a>
     </div>
     <button type="button" id="layout-toggle" class="layout-toggle" aria-label="Toggle vertical navigation">Vertical nav</button>
+    <button type="button" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div id="mobile-nav-panel" class="mobile-nav-panel">
+    <a class="nav-link" data-nav-link href="#about">About</a>
+    <a class="nav-link" data-nav-link href="#research">Research</a>
+    <a class="nav-link" data-nav-link href="#experience">Experience</a>
+    <a class="nav-link" data-nav-link href="#projects">Projects</a>
+    <a class="nav-link" data-nav-link href="#skills">Skills</a>
+    <a class="nav-link" data-nav-link href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -24,6 +35,10 @@
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
     z-index: 20;
+  }
+
+  .nav:has(.mobile-nav-panel.open) {
+    background: var(--bg);
   }
 
   .nav-inner {
@@ -99,9 +114,92 @@
     border-color: var(--border-hover);
   }
 
+  .mobile-nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .mobile-nav-toggle span {
+    display: block;
+    width: 12px;
+    height: 1px;
+    margin: 0 auto;
+    background: var(--muted);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .mobile-nav-toggle[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  .mobile-nav-toggle[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-nav-toggle[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+
+  .mobile-nav-panel {
+    display: none;
+    flex-direction: column;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px 16px;
+    background: var(--bg);
+  }
+
+  .mobile-nav-panel.open {
+    display: flex;
+  }
+
+  .mobile-nav-panel a {
+    padding: 10px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-nav-panel a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav-panel a.active {
+    color: var(--text);
+  }
+
   @media (max-width: 767px) {
     .links {
       display: none;
+    }
+
+    .mobile-nav-toggle {
+      display: flex;
+    }
+
+    .nav {
+      height: auto;
+      isolation: isolate;
+    }
+
+    .nav-inner {
+      height: 48px;
+    }
+
+    .mobile-nav-panel.open {
+      position: relative;
+      z-index: 1;
     }
   }
 
@@ -195,5 +293,26 @@
       return;
     }
     applyLayout(localStorage.getItem(KEY) || 'top');
+  });
+
+  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  const mobilePanel = document.getElementById('mobile-nav-panel');
+
+  const closeMobilePanel = () => {
+    mobilePanel?.classList.remove('open');
+    mobileToggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  mobileToggle?.addEventListener('click', () => {
+    const isOpen = mobilePanel?.classList.toggle('open');
+    mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  mobilePanel?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMobilePanel);
+  });
+
+  window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+    if (event.matches) closeMobilePanel();
   });
 </script>

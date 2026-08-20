@@ -25,5 +25,5 @@ jobs:
       - name: Start preview server
         run: npm run preview -- --host 127.0.0.1 --port 4173 &
       - name: Wait for preview
-        run: npx wait-on http://127.0.0.1:4173/Porfolio/
+        run: npx wait-on http://127.0.0.1:4173/Portfolio/
       - run: npm run smoke:routes

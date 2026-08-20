@@ -5,8 +5,11 @@ const items = [
   { date: 'Dec 2025 / Mid Mar 2026', role: 'Research Engineer', company: 'Arva AI · London', current: false, bullets: ['Redesigned benchmarking framework - decomposed a flawed combined metric into <span class="highlight">factor-specific accuracy scores</span> for verdict prediction and discounting.','Built full agentic observability with <span class="highlight">Langfuse</span> - structured tracing of all agent calls across offline and online environments.','Developed complete evaluation infrastructure: custom evaluators, <span class="highlight">golden dataset</span>, scoring logic, and construction guidelines.'] },
   { date: 'Mar 2025 / Nov 2025', role: 'LLM Trainer & Evaluator', company: 'Mercor Intelligence · Remote', current: false, bullets: ['Designed complex scenarios to stress-test conversational AI - identifying edge cases and failure modes systematically.','Built evaluation rubrics quantifying performance across accuracy, contextual alignment, and user experience.'] },
   { date: 'Nov 2023 / Feb 2025', role: 'Research Assistant', company: 'Queen Mary University of London · London', current: false, bullets: ['Developed bias detection and mitigation algorithms for clinical AI; published in <span class="highlight">Nature (2026)</span>.','Improved anxiety detection by <span class="highlight">10%</span> using time series-based medical NER.','Co-developed a clinical AI platform with <span class="highlight">NHS DialogPlus</span> on Azure GPU infrastructure.'] },
-  { date: 'Jul 2021 / Jul 2022', role: 'Product Engineer, AI Technology', company: 'AI Technology & Systems · California (Remote)', current: false, bullets: ['Built a Deep Neural Network Compiler using Eigen, ONNX, and Caffe for edge devices.','Supervised <span class="highlight">45 interns</span> building TinyML applications.'] },
-  { date: 'Nov 2019 / Mar 2021', role: 'Research Intern', company: 'Indian Institute of Technology · Indore', current: false, bullets: ['Developed AR applications and a traceability app for Android - published.','Contributed to an Intelligent AGV for smart manufacturing (Industry 4.0).'] },
+];
+
+const earlierItems = [
+  { date: 'Jul 2021 / Jul 2022', role: 'Product Engineer, AI Technology', company: 'AI Technology & Systems · California (Remote)', desc: 'Built a Deep Neural Network Compiler using Eigen, ONNX, and Caffe for edge devices. Supervised 45 interns building TinyML applications.' },
+  { date: 'Nov 2019 / Mar 2021', role: 'Research Intern', company: 'Indian Institute of Technology · Indore', desc: 'Developed AR applications and a traceability app for Android - published. Contributed to an Intelligent AGV for smart manufacturing (Industry 4.0).' },
 ];
 ---
 <section id="experience">
@@ -30,6 +33,18 @@ const items = [
       </div>
     </article>
   ))}
+  <p class="earlier-label">Earlier</p>
+  <div class="compact">
+    {earlierItems.map((item, index) => (
+      <article class:list={[index === earlierItems.length - 1 && 'last']}>
+        <div>
+          <p class="title">{item.role} · <span class="company-inline">{item.company}</span></p>
+          <p class="desc">{item.desc}</p>
+        </div>
+        <p class="date-compact">{item.date}</p>
+      </article>
+    ))}
+  </div>
 </section>
 <style>
   .entry { display: grid; grid-template-columns: 72px 1fr; gap: 12px; }
@@ -43,13 +58,23 @@ const items = [
   h3 { font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--text); }
   .company { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
   ul { list-style: none; }
-  li { position: relative; padding-left: 12px; font-size: 12px; color: var(--muted); line-height: 1.65; margin-bottom: 6px; }
+  li { position: relative; padding-left: 12px; font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 6px; }
   li::before { content: '·'; position: absolute; left: 0; color: var(--muted); }
+
+  .earlier-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 28px 0 14px; }
+  .compact article { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .compact article.last { border-bottom: none; }
+  .title { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+  .company-inline { font-weight: 400; color: var(--muted); }
+  .compact .desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
+  .date-compact { font-size: 10px; color: var(--muted); white-space: nowrap; padding-top: 2px; }
 
   @media (max-width: 767px) {
     .entry { grid-template-columns: 1fr; gap: 8px; }
     .date { text-align: left; font-size: 10px; padding-top: 0; }
     .right { padding-left: 14px; }
     .content { padding-bottom: 22px; }
+    .compact article { grid-template-columns: 1fr; gap: 6px; }
+    .date-compact { padding-top: 0; }
   }
 </style>
